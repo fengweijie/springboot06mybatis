@@ -2,7 +2,9 @@ package com.atguigu.springboot06mybatis.controller;
 
 
 import com.atguigu.springboot06mybatis.bean.Department;
+import com.atguigu.springboot06mybatis.bean.Employee;
 import com.atguigu.springboot06mybatis.mapper.DepartmentMapper;
+import com.atguigu.springboot06mybatis.mapper.EmployeeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +16,8 @@ public class DeptController {
     @Autowired
     DepartmentMapper departmentMapper;
 
+    @Autowired
+    EmployeeMapper employeeMapper;
 
     @GetMapping("/dept/{id}")
     public Department getDepartment(@PathVariable("id") Integer id){
@@ -26,7 +30,10 @@ public class DeptController {
         return department;
     }
 
-
+    @GetMapping("/emp/{id}")
+    public Employee getEmp(@PathVariable("id") Integer id){
+        return employeeMapper.getEmpById(id);
+    }
 
 
 
